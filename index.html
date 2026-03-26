@@ -1,20 +1,16 @@
-<!DOCTYPE html><html lang="ru"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Super Jump — Рафикова Рина Римовна | Интеллект-тренер онлайн по всему миру</title> <meta name="description" content="Рафикова Рина Римовна — Амбассадор 6 ранга Super Jump. Онлайн интеллект-тренировки по всему миру. Решаем психологические проблемы, улучшаем здоровье, создаём состояние счастья."> <link rel="preconnect" href="https://fonts.googleapis.com"> <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> <style> * { margin: 0; padding: 0; box-sizing: border-box; } :root { --bg-dark: #0a0a0a; --bg-card: #141414; --accent: #FF6B35; --accent2: #F7C948; --green: #4ADE80; --text: #ffffff; --text-light: #e0e0e0; --text-muted: #a0a0a0; --vk-color: #0077FF; --tg-color: #26A5E4; --wa-color: #25D366; } html { scroll-behavior: smooth; } body { font-family: 'Montserrat', sans-serif; background: var(--bg-dark); color: var(--text); line-height: 1.6; overflow-x: hidden; } a { text-decoration: none; color: inherit; } .con { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+<!DOCTYPE html><html lang="ru"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Super Jump — Рафикова Рина Римовна | Интеллект-тренер онлайн по всему миру</title> <meta name="description" content="Рафикова Рина Римовна — Амбассадор 6 ранга Super Jump. Онлайн интеллект-тренировки по всему миру. Решаем психологические проблемы, улучшаем здоровье, создаём состояние счастья.">
+<!-- DNS prefetch & preconnect -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Preload critical hero image -->
+<link rel="preload" as="image" href="img/1.jpg">
+<!-- Шрифт только нужные веса, font-display:swap -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet"> <style> * { margin: 0; padding: 0; box-sizing: border-box; } :root { --bg-dark: #0a0a0a; --bg-card: #141414; --accent: #FF6B35; --accent2: #F7C948; --green: #4ADE80; --text: #ffffff; --text-light: #e0e0e0; --text-muted: #a0a0a0; --vk-color: #0077FF; --tg-color: #26A5E4; --wa-color: #25D366; } html { scroll-behavior: smooth; } body { font-family: 'Montserrat', sans-serif; background: var(--bg-dark); color: var(--text); line-height: 1.6; overflow-x: hidden; } a { text-decoration: none; color: inherit; } .con { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-    /* PRELOADER */
-    .preloader {
-        position: fixed; top:0; left:0; width:100%; height:100%;
-        background: var(--bg-dark);
-        display: flex; align-items: center; justify-content: center;
-        z-index: 9999; transition: opacity 0.5s, visibility 0.5s;
-    }
-    .preloader.hidden { opacity:0; visibility:hidden; }
-    .preloader-text {
-        font-size: 28px; font-weight: 800;
-        background: linear-gradient(135deg, var(--accent), var(--accent2));
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        animation: pulse 1s infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    /* PRELOADER — мгновенный, не блокирует отрисовку */
+    .preloader { display:none; }
 
     /* HEADER */
     header {
@@ -167,14 +163,29 @@
     .ambassador-badge {
         top: 18px; right: -14px;
         animation: floatY 3s ease-in-out infinite;
+        will-change: transform;
     }
 
     /* Формат Онлайн — внизу справа */
     .float-card {
         bottom: 30px; right: -14px;
         animation: floatY 3s ease-in-out infinite; animation-delay: 1.5s;
+        will-change: transform;
     }
     @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+    /* INLINE FLOAT BADGE (мобильный) */
+    .hero-inline-badges {
+        display: none;
+        gap: 8px; flex-wrap: wrap; margin-bottom: 10px;
+    }
+    .hero-inline-badge {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 6px 12px;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        border-radius: 30px; font-size: 10px; font-weight: 700; color: #000;
+        box-shadow: 0 4px 12px rgba(255,107,53,0.4); white-space: nowrap;
+    }
 
     /* SECTIONS */
     section { padding: 80px 0; }
@@ -206,7 +217,7 @@
         border: 1px solid rgba(255,255,255,0.08); text-align: center;
     }
     .orb-wrap { width: 160px; height: 160px; margin: 0 auto 26px; position: relative; }
-    .orb { position: absolute; border: 2px dashed rgba(255,107,53,0.3); border-radius: 50%; animation: spin 20s linear infinite; }
+    .orb { position: absolute; border: 2px dashed rgba(255,107,53,0.3); border-radius: 50%; animation: spin 20s linear infinite; will-change: transform; }
     .orb-1 { width:100%; height:100%; top:0; left:0; }
     .orb-2 { width:68%; height:68%; top:16%; left:16%; animation-direction: reverse; animation-duration:14s; }
     .orb-3 { width:38%; height:38%; top:31%; left:31%; animation-duration:9s; }
@@ -217,9 +228,7 @@
         background: linear-gradient(135deg, var(--accent), var(--accent2));
         border-radius: 50%; display: flex; align-items: center; justify-content: center;
         font-size: 32px; box-shadow: 0 10px 40px rgba(255,107,53,0.5);
-        animation: glow 2s ease-in-out infinite;
     }
-    @keyframes glow { 0%,100%{box-shadow:0 10px 40px rgba(255,107,53,0.5)} 50%{box-shadow:0 10px 60px rgba(255,107,53,0.8)} }
     .what-visual h4 {
         font-size: 20px; font-weight: 700; margin-bottom: 8px;
         background: linear-gradient(135deg, var(--accent), var(--accent2));
@@ -414,21 +423,85 @@
     .partner-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-light); }
     .partner-list li::before { content: '✦'; color: var(--accent); font-size: 12px; flex-shrink: 0; margin-top: 2px; }
     .partner-photos-title { font-size: 20px; font-weight: 700; margin-bottom: 22px; text-align: center; }
-    .partner-photos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+
+    /* PARTNER SLIDER */
+    .partner-slider-wrap { position: relative; overflow: hidden; margin-bottom: 0; }
+    .partner-slider-track {
+        display: flex; gap: 14px;
+        transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
     .partner-photo {
+        flex: 0 0 calc(20% - 12px);
         aspect-ratio: 3/4; border-radius: 16px; overflow: hidden;
         background: var(--bg-dark); border: 2px solid rgba(255,255,255,0.06);
-        transition: all 0.3s; cursor: pointer;
+        transition: border-color 0.3s, box-shadow 0.3s; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
     }
-    .partner-photo:hover { border-color: var(--accent); transform: translateY(-6px); box-shadow: 0 15px 35px rgba(255,107,53,0.2); }
-    .partner-photo img { width:100%; height:100%; object-fit: cover; display: block; transition: transform 0.3s; }
-    .partner-photo:hover img { transform: scale(1.05); }
+    .partner-photo:hover { border-color: var(--accent); box-shadow: 0 15px 35px rgba(255,107,53,0.2); }
+    .partner-photo img { width:100%; height:100%; object-fit: cover; display: block; transition: transform 0.3s; background: var(--bg-dark); }
+    .partner-photo:hover img { transform: scale(1.03); }
     .pp-placeholder {
         width:100%; height:100%; display:flex; align-items:center; justify-content:center;
         flex-direction:column; gap:10px;
     }
     .pp-placeholder span { font-size: 38px; }
     .pp-placeholder p { font-size: 11px; color: var(--text-muted); text-align: center; padding: 0 8px; }
+    .partner-slider-controls {
+        display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 20px;
+    }
+    .partner-slider-btn {
+        width: 44px; height: 44px; border-radius: 50%;
+        background: var(--bg-dark); border: 1px solid rgba(255,255,255,0.1);
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; transition: all 0.3s; font-size: 16px; color: #fff;
+    }
+    .partner-slider-btn:hover { background: var(--accent); border-color: var(--accent); }
+    .partner-slider-btn:disabled { opacity: 0.3; cursor: default; }
+    .partner-slider-dots { display: flex; gap: 8px; }
+    .partner-slider-dot {
+        width: 8px; height: 8px; border-radius: 50%;
+        background: rgba(255,255,255,0.2); transition: all 0.3s; cursor: pointer;
+    }
+    .partner-slider-dot.active { background: var(--accent); width: 22px; border-radius: 4px; }
+
+    /* PARTNER MODAL */
+    .partner-modal {
+        position: fixed; top:0; left:0; right:0; bottom:0;
+        background: rgba(0,0,0,0.97); z-index: 10000;
+        display: flex; align-items: center; justify-content: center;
+        opacity:0; visibility:hidden; transition: all 0.3s; padding: 20px;
+    }
+    .partner-modal.active { opacity:1; visibility:visible; }
+    .partner-modal-img-wrap {
+        position: relative; display: flex; align-items: center; justify-content: center;
+        max-width: 90vw; max-height: 90vh;
+    }
+    .partner-modal img {
+        max-width: 85vw; max-height: 85vh; object-fit: contain; border-radius: 10px;
+        transition: opacity 0.25s;
+    }
+    .partner-modal-close {
+        position: fixed; top:20px; right:28px;
+        font-size: 46px; color: #fff; cursor: pointer;
+        background: none; border: none; line-height: 1; transition: color 0.3s; z-index: 10002;
+    }
+    .partner-modal-close:hover { color: var(--accent); }
+    .partner-nav-btn {
+        position: fixed; top: 50%; transform: translateY(-50%);
+        width: 54px; height: 54px; border-radius: 50%;
+        background: rgba(255,107,53,0.15); border: 2px solid rgba(255,107,53,0.4);
+        color: #fff; font-size: 22px; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: all 0.3s; z-index: 10001;
+    }
+    .partner-nav-btn:hover { background: var(--accent); border-color: var(--accent); }
+    .partner-nav-prev { left: 20px; }
+    .partner-nav-next { right: 20px; }
+    .partner-modal-counter {
+        position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+        font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 600; z-index: 10001;
+    }
+
     .partner-cta {
         text-align: center; margin-top: 50px; padding: 48px 40px;
         background: linear-gradient(135deg, rgba(255,107,53,0.08), rgba(247,201,72,0.05));
@@ -440,6 +513,8 @@
     /* CONTACT */
     .contact-sec { background: linear-gradient(180deg, #0f0f0f 0%, var(--bg-dark) 100%); }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .contact-photo-wrap { width: 100%; border-radius: 20px; overflow: hidden; border: 2px solid rgba(255,107,53,0.3); box-shadow: 0 15px 40px rgba(255,107,53,0.15); margin-bottom: 24px; max-height: 280px; }
+    .contact-photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .ci h3 { font-size: 24px; font-weight: 800; margin-bottom: 16px; }
     .ci > p { color: var(--text-light); margin-bottom: 32px; font-size: 15px; }
     .c-item { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
@@ -460,9 +535,45 @@
     .soc-wa svg { fill: #25D366; }
     .soc-wa:hover { background: #25D366; border-color: #25D366; transform: translateY(-4px); box-shadow: 0 8px 25px rgba(37,211,102,0.35); }
     .soc-wa:hover svg { fill: #fff; }
+    .soc-tg svg { fill: var(--tg-color); }
+    .soc-tg:hover { background: var(--tg-color); border-color: var(--tg-color); transform: translateY(-4px); box-shadow: 0 8px 25px rgba(38,165,228,0.4); }
+    .soc-tg:hover svg { fill: #fff; }
     .soc-ph svg { fill: var(--accent); }
     .soc-ph:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 25px rgba(255,107,53,0.35); }
     .soc-ph:hover svg { fill: #fff; }
+
+    /* TELEGRAM CONTACT ITEM */
+    .tg-contact-link {
+        display: inline-flex; align-items: center; gap: 6px;
+        color: var(--tg-color); font-size: 14px; font-weight: 700;
+        padding: 3px 10px 3px 6px; border-radius: 8px;
+        background: rgba(38,165,228,0.1); border: 1px solid rgba(38,165,228,0.25);
+        transition: all 0.3s;
+    }
+    .tg-contact-link svg { width: 18px; height: 18px; fill: var(--tg-color); flex-shrink: 0; }
+    .tg-contact-link:hover { background: var(--tg-color); color: #fff; border-color: var(--tg-color); }
+    .tg-contact-link:hover svg { fill: #fff; }
+
+    /* FOOTER TG */
+    .fs-tg svg { fill: var(--tg-color); }
+    .fs-tg:hover { background: var(--tg-color); border-color: var(--tg-color); transform: translateY(-3px); }
+    .fs-tg:hover svg { fill: #fff; }
+
+    /* CONTACT PHOTO */
+    .contact-photo-wrap {
+        width: 100%;
+        aspect-ratio: 672 / 741;
+        border-radius: 18px;
+        overflow: hidden;
+        margin-bottom: 24px;
+        border: 2px solid rgba(255,107,53,0.3);
+        box-shadow: 0 12px 40px rgba(255,107,53,0.15);
+    }
+    .contact-photo-wrap img {
+        width: 100%; height: 100%;
+        object-fit: cover; object-position: center top;
+        display: block;
+    }
 
     /* FORM */
     .cform { background: var(--bg-card); border-radius: 26px; padding: 36px; border: 1px solid rgba(255,255,255,0.05); }
@@ -648,7 +759,7 @@
         .hero-img-wrap { order: -1; }
         .hero-format { grid-template-columns: repeat(4, 1fr); }
         .about-photo { position: relative; top: 0; max-width: 320px; margin: 0 auto; }
-        .partner-photos { grid-template-columns: repeat(3,1fr); }
+        .partner-photo { flex: 0 0 calc(33.333% - 10px); }
         .intellect-cards { grid-template-columns: 1fr 1fr; }
         .cert-slide { flex: 0 0 calc(33.333% - 14px); }
         .ambassador-badge { right: 0; }
@@ -659,35 +770,51 @@
         .nav-hbtn-wrap { display: none; }
         header .inner { grid-template-columns: auto auto; justify-content: space-between; }
         .mbtn { display: flex; }
-        section { padding: 55px 0; }
-        .hero { padding-top: 75px; padding-bottom: 30px; }
-        .hero h1 { font-size: clamp(20px, 5.5vw, 30px); }
-        .hero-desc { font-size: 13px; }
-        .hero-format { grid-template-columns: repeat(2, 1fr); }
+        section { padding: 40px 0; }
+        /* HERO мобильный — всё в экран */
+        .hero { padding-top: 68px; padding-bottom: 16px; min-height: 100svh; }
+        .hero-grid { gap: 14px; }
+        .hero h1 { font-size: clamp(17px, 4.5vw, 24px); margin-bottom: 8px; }
+        .hero-desc { font-size: 11.5px; margin-bottom: 10px; line-height: 1.55; }
+        .hero-format { grid-template-columns: repeat(2, 1fr); gap: 4px; margin-bottom: 10px; }
+        .hf-item { padding: 5px 3px 4px; font-size: 9px; }
+        .hf-icon { font-size: 15px; }
+        .hero-btns { gap: 8px; }
+        .hero-btns .btn { padding: 9px 16px; font-size: 11px; }
+        /* Плавающие бейджи убираем position:absolute — показываем inline-версию */
         .float-card { display: none; }
-        .ambassador-badge { right: 4px; }
-        .ambassador-badge .fb-val { font-size: 11px; }
-        .ambassador-badge .fb-lbl { font-size: 8px; }
-        .hero-photo { width: 220px; height: 285px; }
+        .ambassador-badge { display: none; }
+        /* Inline badges показываем под фото */
+        .hero-inline-badges { display: flex; }
+        .hero-photo { width: 180px; height: 230px; border-radius: 18px; }
         .about-stats { grid-template-columns: 1fr 1fr; }
         .frow { grid-template-columns: 1fr; }
         .cform { padding: 22px; }
+        .contact-photo-wrap { max-height: 280px; aspect-ratio: unset; }
         .reviews-grid { grid-template-columns: 1fr; }
-        .partner-photos { grid-template-columns: repeat(2,1fr); }
+        .partner-photo { flex: 0 0 calc(50% - 7px); }
+        .partner-nav-btn { width: 42px; height: 42px; font-size: 17px; }
+        .partner-nav-prev { left: 8px; }
+        .partner-nav-next { right: 8px; }
         .intellect-cards { grid-template-columns: 1fr; }
         .foot-top { flex-direction: column; align-items: flex-start; }
+        /* Сертификаты — уменьшить, 2 в экране */
         .cert-slide { flex: 0 0 calc(50% - 10px); }
-        .cert-nav-btn { width: 42px; height: 42px; font-size: 17px; }
-        .cert-nav-prev { left: 8px; }
-        .cert-nav-next { right: 8px; }
+        .cert-lbl { font-size: 10px; padding: 8px 10px; }
+        .cert-nav-btn { width: 38px; height: 38px; font-size: 15px; }
+        .cert-nav-prev { left: 6px; }
+        .cert-nav-next { right: 6px; }
+        .hero-badge { font-size: 9px; padding: 5px 12px; margin-bottom: 8px; }
     }
     @media (max-width: 480px) {
         .hero-format { grid-template-columns: repeat(2, 1fr); }
-        .cert-slide { flex: 0 0 100%; }
-        .hero h1 { font-size: clamp(19px, 5vw, 26px); }
+        .cert-slide { flex: 0 0 calc(50% - 10px); }
+        .hero h1 { font-size: clamp(16px, 4.5vw, 21px); }
+        .hero-photo { width: 155px; height: 200px; }
+        .partner-photo { flex: 0 0 calc(50% - 7px); }
     }
 </style>
-</head> <body><!-- PRELOADER --><div class="preloader" id="preloader"> <div class="preloader-text">SUPER JUMP</div> </div><!-- CERT MODAL с навигацией --><div class="cert-modal" id="certModal"> <button class="cert-modal-close" id="certClose">×</button> <button class="cert-nav-btn cert-nav-prev" id="certPrev">&#8592;</button> <div class="cert-modal-img-wrap"> <img id="certModalImg" src="" alt="Сертификат"> </div> <button class="cert-nav-btn cert-nav-next" id="certNext">&#8594;</button> <div class="cert-modal-counter" id="certCounter"></div> </div><!-- HEADER --><header id="header"> <div class="con"> <div class="inner"> <div class="logo" id="logoTop"> <div class="logo-icon"> <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"> <circle cx="18" cy="6.5" r="3.5" fill="white"/> <path d="M18 10V19" stroke="white" stroke-width="2.8" stroke-linecap="round"/> <path d="M18 13.5L12 8.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/> <path d="M18 13.5L24 8.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/> <path d="M18 19L12.5 27" stroke="white" stroke-width="2.5" stroke-linecap="round"/> <path d="M18 19L23.5 27" stroke="white" stroke-width="2.5" stroke-linecap="round"/> <path d="M5 33C5 28.5 31 28.5 31 33" stroke="white" stroke-width="2.8" stroke-linecap="round" fill="none"/> </svg> </div> <div class="logo-texts"> <span class="logo-s">SUPER</span> <span class="logo-j">JUMP</span> </div> </div> <div class="nav-hbtn-wrap"> <nav> <a href="#what">О МЕТОДИКЕ</a> <a href="#certs">СЕРТИФИКАТЫ</a> <a href="#results">РЕЗУЛЬТАТЫ</a> <a href="#reviews">ОТЗЫВЫ</a> <a href="#book" style="color:var(--accent2);">🎁 ПОДАРОК</a> <a href="#about">ТРЕНЕР</a> <a href="#partner">ПАРТНЁРСТВО</a> <a href="#contact">КОНТАКТЫ</a> </nav> <a href="#contact" class="hbtn">ЗАПИСАТЬСЯ</a> </div> <button class="mbtn" id="mbtn" aria-label="Меню"> <span></span><span></span><span></span> </button> </div> </div> </header><!-- MOBILE MENU --><div class="mmenu" id="mmenu"> <a href="#what">О МЕТОДИКЕ</a> <a href="#certs">СЕРТИФИКАТЫ</a> <a href="#results">РЕЗУЛЬТАТЫ</a> <a href="#reviews">ОТЗЫВЫ</a> <a href="#book" style="color:var(--accent2);">🎁 ПОДАРОК</a> <a href="#about">ТРЕНЕР</a> <a href="#partner">ПАРТНЁРСТВО</a> <a href="#contact">ЗАПИСАТЬСЯ</a> </div><!-- HERO --><section class="hero"> <div class="hero-bg"></div> <div class="con"> <div class="hero-grid"> <div> <div class="hero-badge">ОНЛАЙН-ТРЕНИРОВКИ ПО ВСЕМУ МИРУ</div> <!-- H1: Super Jump на отдельной строке --> <h1>Раскрой потенциал своего разума с <span>Super Jump</span></h1> <p class="hero-desc"> Комплекс интеллектуальных упражнений — решаем психологические проблемы, улучшаем здоровье, создаём состояние счастья в моменте, достигаем жизненные цели. </p> <!-- Иконки соответствуют смыслу --> <div class="hero-format"> <div class="hf-item"> <span class="hf-icon">💻</span> <span>Онлайн</span> </div> <div class="hf-item"> <span class="hf-icon">🎯</span> <span>Работа с первопричиной</span> </div> <div class="hf-item"> <span class="hf-icon">🤲</span> <span>Личное сопровождение</span> </div> <div class="hf-item"> <span class="hf-icon">🧠</span> <span>Повышение интеллекта</span> </div> <div class="hf-item"> <span class="hf-icon">👥</span> <span>Развитие в сильном сообществе</span> </div> <div class="hf-item"> <span class="hf-icon">🌍</span> <span>Из любой точки мира</span> </div> <div class="hf-item"> <span class="hf-icon">🗣️</span> <span>Ценит живое общение</span> </div> </div> <div class="hero-btns"> <a href="#contact" class="btn btn-primary">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a> <a href="#what" class="btn btn-secondary">УЗНАТЬ БОЛЬШЕ</a> </div> </div> <div class="hero-img-wrap"> <div class="hero-photo"> <img src="img/photo.jpg" alt="Рафикова Рина Римовна — интеллект-тренер Super Jump" onerror="this.style.display='none'; this.parentElement.innerHTML='👩';"> </div> <div class="hero-float-badge ambassador-badge"> <span class="fb-icon">🏅</span> <div class="fb-text"> <span class="fb-lbl">Статус</span> <span class="fb-val">Амбассадор 6 ранга</span> </div> </div> <div class="hero-float-badge float-card"> <span class="fb-icon">🌍</span> <div class="fb-text"> <span class="fb-lbl">Формат</span> <span class="fb-val">Онлайн</span> </div> </div> </div> </div> </div> </section><!-- О МЕТОДИКЕ --><section class="what-sec" id="what"> <div class="con"> <div class="sec-head"> <div class="sec-badge">О МЕТОДИКЕ</div> <h2 class="sec-title">Что такое Super Jump?</h2> <p class="sec-desc">Уникальная система интеллектуальных упражнений, открытая для людей по всему миру</p> </div> <div class="what-grid"> <div class="what-content"> <h3>Инструмент глубинного преобразования личности</h3> <p>Большинство наших проблем — со здоровьем, в отношениях, в финансах — уходят корнями в деструктивные программы, сформированные в детстве и закреплённые жизненным опытом. Эти программы работают автоматически, управляя нашими реакциями и решениями без нашего ведома.</p> <p>Super Jump — это авторская система упражнений, позволяющая перезаписать разрушительные установки подсознания на созидательные. Занятия проходят онлайн под руководством сертифицированного тренера — доступно из любой точки мира без ограничений.</p> <div class="what-features"> <div class="wf"> <div class="wf-icon">🧠</div> <div> <h4>Работа с подсознанием</h4> <p>Прямое воздействие на глубинные программы, формирующие поведение и результаты</p> </div> </div> <div class="wf"> <div class="wf-icon">💡</div> <div> <h4>Комплексная трансформация</h4> <p>Одновременное улучшение здоровья, мышления, эмоционального состояния и качества жизни</p> </div> </div> <div class="wf"> <div class="wf-icon">⚡</div> <div> <h4>Ощутимый эффект быстро</h4> <p>Первые изменения заметны уже после нескольких занятий — в самочувствии и мышлении</p> </div> </div> </div> </div> <div class="what-visual"> <div class="orb-wrap"> <div class="orb orb-1"></div> <div class="orb orb-2"></div> <div class="orb orb-3"></div> <div class="orb-center">✨</div> </div> <h4>Новый уровень жизни</h4> <p>Трансформируй себя изнутри — через разум к результату</p> </div> </div> </div> </section><!-- КТО ТАКОЙ ИНТЕЛЛЕКТ-ТРЕНЕР --><section class="intellect-sec" id="intellect"> <div class="con"> <div class="intellect-inner"> <div class="int-icon">🎓</div> <h3>Кто такой интеллект-тренер?</h3> <p>Интеллект-тренер — это сертифицированный специалист, обучающий практике интеллектуальных упражнений и сопровождающий клиента в процессе глубинных изменений. В отличие от психолога или коуча, он работает непосредственно с подсознательными механизмами, запуская системные перемены в мышлении, поведении, здоровье и жизненных результатах. Рина Рафикова — Амбассадор 6 ранга Super Jump, ведущий онлайн-занятия для участников со всего мира.</p> </div> <div class="intellect-cards"> <div class="int-card"> <div class="int-card-icon">🔬</div> <h4>Работа с первопричиной</h4> <p>Не убирает симптомы, а устраняет корень проблемы — негативную программу в подсознании</p> </div> <div class="int-card"> <div class="int-card-icon">🧭</div> <h4>Личное сопровождение</h4> <p>Тренер контролирует технику выполнения упражнений и адаптирует программу под вас</p> </div> <div class="int-card"> <div class="int-card-icon">📈</div> <h4>Измеримый результат</h4> <p>Чёткие критерии прогресса: от состояния и энергии до конкретных достижений в жизни</p> </div> </div> </div> </section><!-- СЕРТИФИКАТЫ — СЛАЙДЕР --><section class="certs-sec" id="certs"> <div class="con"> <div class="sec-head"> <div class="sec-badge">КВАЛИФИКАЦИЯ</div> <h2 class="sec-title">Сертификаты и дипломы</h2> <p class="sec-desc">Подтверждённая квалификация и профессиональные достижения<br>Рины Рафиковой</p> </div> <div class="slider-wrap"> <div class="slider-track" id="sliderTrack"> <div class="cert-slide" data-src="diploms/1.jpg" data-idx="0"> <div class="cert-img"> <img src="diploms/1.jpg" alt="Диплом 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">🏆</div> </div> <div class="cert-lbl">Сертификат интеллект-тренера Super Jump</div> </div> <div class="cert-slide" data-src="diploms/2.jpg" data-idx="1"> <div class="cert-img"> <img src="diploms/2.jpg" alt="Диплом 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">🎓</div> </div> <div class="cert-lbl">Диплом о профессиональной подготовке</div> </div> <div class="cert-slide" data-src="diploms/3.jpg" data-idx="2"> <div class="cert-img"> <img src="diploms/3.jpg" alt="Диплом 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">📜</div> </div> <div class="cert-lbl">Амбассадор 6 ранга Super Jump</div> </div> <div class="cert-slide" data-src="diploms/4.jpg" data-idx="3"> <div class="cert-img"> <img src="diploms/4.jpg" alt="Диплом 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">🌟</div> </div> <div class="cert-lbl">Повышение квалификации</div> </div> <div class="cert-slide" data-src="diploms/5.jpg" data-idx="4"> <div class="cert-img"> <img src="diploms/5.jpg" alt="Диплом 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">🎯</div> </div> <div class="cert-lbl">Достижение высокого ранга</div> </div> <div class="cert-slide" data-src="diploms/6.jpg" data-idx="5"> <div class="cert-img"> <img src="diploms/6.jpg" alt="Диплом 6" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">🏅</div> </div> <div class="cert-lbl">Лидерство и профессиональный рост</div> </div> <div class="cert-slide" data-src="diploms/7.jpg" data-idx="6"> <div class="cert-img"> <img src="diploms/7.jpg" alt="Диплом 7" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">✨</div> </div> <div class="cert-lbl">Дополнительная специализация</div> </div> <div class="cert-slide" data-src="diploms/8.jpg" data-idx="7"> <div class="cert-img"> <img src="diploms/8.jpg" alt="Диплом 8" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">💎</div> </div> <div class="cert-lbl">Сертификат наставника</div> </div> </div> </div> <div class="slider-controls"> <button class="slider-btn" id="sliderPrev">&#8592;</button> <div class="slider-dots" id="sliderDots"></div> <button class="slider-btn" id="sliderNext">&#8594;</button> </div> </div> </section>
+</head> <body><!-- PRELOADER --><div class="preloader" id="preloader"> <div class="preloader-text">SUPER JUMP</div> </div><!-- PARTNER MODAL --><div class="partner-modal" id="partnerModal"> <button class="partner-modal-close" id="partnerModalClose">×</button> <button class="partner-nav-btn partner-nav-prev" id="partnerNavPrev">&#8592;</button> <div class="partner-modal-img-wrap"> <img id="partnerModalImg" src="" alt="Фото партнёрства"> </div> <button class="partner-nav-btn partner-nav-next" id="partnerNavNext">&#8594;</button> <div class="partner-modal-counter" id="partnerModalCounter"></div> </div><!-- CERT MODAL с навигацией --><div class="cert-modal" id="certModal"> <button class="cert-modal-close" id="certClose">×</button> <button class="cert-nav-btn cert-nav-prev" id="certPrev">&#8592;</button> <div class="cert-modal-img-wrap"> <img id="certModalImg" src="" alt="Сертификат"> </div> <button class="cert-nav-btn cert-nav-next" id="certNext">&#8594;</button> <div class="cert-modal-counter" id="certCounter"></div> </div><!-- HEADER --><header id="header"> <div class="con"> <div class="inner"> <div class="logo" id="logoTop"> <div class="logo-icon"> <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"> <circle cx="18" cy="6.5" r="3.5" fill="white"/> <path d="M18 10V19" stroke="white" stroke-width="2.8" stroke-linecap="round"/> <path d="M18 13.5L12 8.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/> <path d="M18 13.5L24 8.5" stroke="white" stroke-width="2.5" stroke-linecap="round"/> <path d="M18 19L12.5 27" stroke="white" stroke-width="2.5" stroke-linecap="round"/> <path d="M18 19L23.5 27" stroke="white" stroke-width="2.5" stroke-linecap="round"/> <path d="M5 33C5 28.5 31 28.5 31 33" stroke="white" stroke-width="2.8" stroke-linecap="round" fill="none"/> </svg> </div> <div class="logo-texts"> <span class="logo-s">SUPER</span> <span class="logo-j">JUMP</span> </div> </div> <div class="nav-hbtn-wrap"> <nav> <a href="#what">О МЕТОДИКЕ</a> <a href="#certs">СЕРТИФИКАТЫ</a> <a href="#results">РЕЗУЛЬТАТЫ</a> <a href="#reviews">ОТЗЫВЫ</a> <a href="#book" style="color:var(--accent2);">🎁 ПОДАРОК</a> <a href="#about">ТРЕНЕР</a> <a href="#partner">ПАРТНЁРСТВО</a> <a href="#contact">КОНТАКТЫ</a> </nav> <a href="#contact" class="hbtn">ЗАПИСАТЬСЯ</a> </div> <button class="mbtn" id="mbtn" aria-label="Меню"> <span></span><span></span><span></span> </button> </div> </div> </header><!-- MOBILE MENU --><div class="mmenu" id="mmenu"> <a href="#what">О МЕТОДИКЕ</a> <a href="#certs">СЕРТИФИКАТЫ</a> <a href="#results">РЕЗУЛЬТАТЫ</a> <a href="#reviews">ОТЗЫВЫ</a> <a href="#book" style="color:var(--accent2);">🎁 ПОДАРОК</a> <a href="#about">ТРЕНЕР</a> <a href="#partner">ПАРТНЁРСТВО</a> <a href="#contact">ЗАПИСАТЬСЯ</a> <a href="https://t.me/RinaRaf" target="_blank" rel="noopener" style="color:var(--tg-color);">✈️ TELEGRAM</a> </div><!-- HERO --><section class="hero"> <div class="hero-bg"></div> <div class="con"> <div class="hero-grid"> <div> <div class="hero-badge">ОНЛАЙН-ТРЕНИРОВКИ ПО ВСЕМУ МИРУ</div> <!-- H1: Super Jump на отдельной строке --> <h1>Раскрой потенциал своего разума с <span>Super Jump</span></h1> <p class="hero-desc"> Комплекс интеллектуальных упражнений — решаем психологические проблемы, улучшаем здоровье, создаём состояние счастья в моменте, достигаем жизненные цели. </p> <!-- Иконки соответствуют смыслу --> <div class="hero-format"> <div class="hf-item"> <span class="hf-icon">💻</span> <span>Онлайн</span> </div> <div class="hf-item"> <span class="hf-icon">🎯</span> <span>Работа с первопричиной</span> </div> <div class="hf-item"> <span class="hf-icon">🤲</span> <span>Личное сопровождение</span> </div> <div class="hf-item"> <span class="hf-icon">🧠</span> <span>Повышение интеллекта</span> </div> <div class="hf-item"> <span class="hf-icon">👥</span> <span>Развитие в сильном сообществе</span> </div> <div class="hf-item"> <span class="hf-icon">🌍</span> <span>Из любой точки мира</span> </div> <div class="hf-item"> <span class="hf-icon">🗣️</span> <span>Ценит живое общение</span> </div> </div> <div class="hero-btns"> <a href="#contact" class="btn btn-primary">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a> <a href="#what" class="btn btn-secondary">УЗНАТЬ БОЛЬШЕ</a> </div> </div> <div class="hero-img-wrap"> <div class="hero-photo"> <img src="img/1.jpg" alt="Рафикова Рина Римовна — интеллект-тренер Super Jump" onerror="this.style.display='none'; this.parentElement.innerHTML='👩';"> </div> <div class="hero-float-badge ambassador-badge"> <span class="fb-icon">🏅</span> <div class="fb-text"> <span class="fb-lbl">Статус</span> <span class="fb-val">Амбассадор 6 ранга</span> </div> </div> <div class="hero-float-badge float-card"> <span class="fb-icon">🌍</span> <div class="fb-text"> <span class="fb-lbl">Формат</span> <span class="fb-val">Онлайн</span> </div> </div> <!-- Inline бейджи для мобильного --> <div class="hero-inline-badges"> <div class="hero-inline-badge">🏅 Амбассадор 6 ранга</div> <div class="hero-inline-badge">🌍 Онлайн</div> </div> </div> </div> </div> </section><!-- О МЕТОДИКЕ --><section class="what-sec" id="what"> <div class="con"> <div class="sec-head"> <div class="sec-badge">О МЕТОДИКЕ</div> <h2 class="sec-title">Что такое Super Jump?</h2> <p class="sec-desc">Уникальная система интеллектуальных упражнений, открытая для людей по всему миру</p> </div> <div class="what-grid"> <div class="what-content"> <h3>Инструмент глубинного преобразования личности</h3> <p>Большинство наших проблем — со здоровьем, в отношениях, в финансах — уходят корнями в деструктивные программы, сформированные в детстве и закреплённые жизненным опытом. Эти программы работают автоматически, управляя нашими реакциями и решениями без нашего ведома.</p> <p>Super Jump — это авторская система упражнений, позволяющая перезаписать разрушительные установки подсознания на созидательные. Занятия проходят онлайн под руководством сертифицированного тренера — доступно из любой точки мира без ограничений.</p> <div class="what-features"> <div class="wf"> <div class="wf-icon">🧠</div> <div> <h4>Работа с подсознанием</h4> <p>Прямое воздействие на глубинные программы, формирующие поведение и результаты</p> </div> </div> <div class="wf"> <div class="wf-icon">💡</div> <div> <h4>Комплексная трансформация</h4> <p>Одновременное улучшение здоровья, мышления, эмоционального состояния и качества жизни</p> </div> </div> <div class="wf"> <div class="wf-icon">⚡</div> <div> <h4>Ощутимый эффект быстро</h4> <p>Первые изменения заметны уже после нескольких занятий — в самочувствии и мышлении</p> </div> </div> </div> </div> <div class="what-visual"> <div class="orb-wrap"> <div class="orb orb-1"></div> <div class="orb orb-2"></div> <div class="orb orb-3"></div> <div class="orb-center">✨</div> </div> <h4>Новый уровень жизни</h4> <p>Трансформируй себя изнутри — через разум к результату</p> </div> </div> </div> </section><!-- КТО ТАКОЙ ИНТЕЛЛЕКТ-ТРЕНЕР --><section class="intellect-sec" id="intellect"> <div class="con"> <div class="intellect-inner"> <div class="int-icon">🎓</div> <h3>Кто такой интеллект-тренер?</h3> <p>Интеллект-тренер — это сертифицированный специалист, обучающий практике интеллектуальных упражнений и сопровождающий клиента в процессе глубинных изменений. В отличие от психолога или коуча, он работает непосредственно с подсознательными механизмами, запуская системные перемены в мышлении, поведении, здоровье и жизненных результатах. Рина Рафикова — Амбассадор 6 ранга Super Jump, ведущий онлайн-занятия для участников со всего мира.</p> </div> <div class="intellect-cards"> <div class="int-card"> <div class="int-card-icon">🔬</div> <h4>Работа с первопричиной</h4> <p>Не убирает симптомы, а устраняет корень проблемы — негативную программу в подсознании</p> </div> <div class="int-card"> <div class="int-card-icon">🧭</div> <h4>Личное сопровождение</h4> <p>Тренер контролирует технику выполнения упражнений и адаптирует программу под вас</p> </div> <div class="int-card"> <div class="int-card-icon">📈</div> <h4>Измеримый результат</h4> <p>Чёткие критерии прогресса: от состояния и энергии до конкретных достижений в жизни</p> </div> </div> </div> </section><!-- СЕРТИФИКАТЫ — СЛАЙДЕР --><section class="certs-sec" id="certs"> <div class="con"> <div class="sec-head"> <div class="sec-badge">КВАЛИФИКАЦИЯ</div> <h2 class="sec-title">Сертификаты и дипломы</h2> <p class="sec-desc">Подтверждённая квалификация и профессиональные достижения<br>Рины Рафиковой</p> </div> <div class="slider-wrap"> <div class="slider-track" id="sliderTrack"> <div class="cert-slide" data-src="diploms/1.jpg" data-idx="0"> <div class="cert-img"> <img src="diploms/1.jpg" alt="Диплом 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">🏆</div> </div> <div class="cert-lbl">Сертификат интеллект-тренера Super Jump</div> </div> <div class="cert-slide" data-src="diploms/2.jpg" data-idx="1"> <div class="cert-img"> <img src="diploms/2.jpg" alt="Диплом 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">🎓</div> </div> <div class="cert-lbl">Диплом о профессиональной подготовке</div> </div> <div class="cert-slide" data-src="diploms/3.jpg" data-idx="2"> <div class="cert-img"> <img src="diploms/3.jpg" alt="Диплом 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">📜</div> </div> <div class="cert-lbl">Амбассадор 6 ранга Super Jump</div> </div> <div class="cert-slide" data-src="diploms/4.jpg" data-idx="3"> <div class="cert-img"> <img src="diploms/4.jpg" alt="Диплом 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">🌟</div> </div> <div class="cert-lbl">Повышение квалификации</div> </div> <div class="cert-slide" data-src="diploms/5.jpg" data-idx="4"> <div class="cert-img"> <img src="diploms/5.jpg" alt="Диплом 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">🎯</div> </div> <div class="cert-lbl">Достижение высокого ранга</div> </div> <div class="cert-slide" data-src="diploms/6.jpg" data-idx="5"> <div class="cert-img"> <img src="diploms/6.jpg" alt="Диплом 6" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">🏅</div> </div> <div class="cert-lbl">Лидерство и профессиональный рост</div> </div> <div class="cert-slide" data-src="diploms/7.jpg" data-idx="6"> <div class="cert-img"> <img src="diploms/7.jpg" alt="Диплом 7" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">✨</div> </div> <div class="cert-lbl">Дополнительная специализация</div> </div> <div class="cert-slide" data-src="diploms/8.jpg" data-idx="7"> <div class="cert-img"> <img src="diploms/8.jpg" alt="Диплом 8" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"> <div class="cert-img-ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;">💎</div> </div> <div class="cert-lbl">Сертификат наставника</div> </div> </div> </div> <div class="slider-controls"> <button class="slider-btn" id="sliderPrev">&#8592;</button> <div class="slider-dots" id="sliderDots"></div> <button class="slider-btn" id="sliderNext">&#8594;</button> </div> </div> </section>
 
 <!-- РЕЗУЛЬТАТЫ УЧЕНИКОВ -->
 <section class="results-sec" id="results">
@@ -916,7 +1043,7 @@
         </div>
         <div class="about-grid">
             <div class="about-photo">
-                <img src="img/photo2.jpg" alt="Рафикова Рина Римовна — интеллект-тренер Super Jump"
+                <img src="img/4.jpg" alt="Рафикова Рина Римовна — интеллект-тренер Super Jump" loading="lazy" decoding="async"
                      onerror="this.style.display='none'; this.parentElement.innerHTML='👩';">
             </div>
             <div class="about-content">
@@ -979,27 +1106,29 @@
         </div>
 
         <p class="partner-photos-title">Атмосфера сообщества Super Jump</p>
-        <div class="partner-photos">
-            <div class="partner-photo">
-                <img src="img/11.jpg" alt="Партнёрство Super Jump"
-                     onerror="this.parentElement.innerHTML='<div class=\'pp-placeholder\'><span>🤝</span><p>Команда Super Jump</p></div>';">
+        <div class="partner-slider-wrap">
+            <div class="partner-slider-track" id="partnerTrack">
+                <div class="partner-photo" data-psrc="img/11.jpg" data-pidx="0">
+                    <img src="img/11.jpg" alt="Партнёрство Super Jump" loading="lazy" decoding="async" onerror="this.parentElement.innerHTML='<div class=\'pp-placeholder\'><span>🤝</span><p>Команда Super Jump</p></div>';">
+                </div>
+                <div class="partner-photo" data-psrc="img/12.jpg" data-pidx="1">
+                    <img src="img/12.jpg" alt="Сообщество Super Jump" loading="lazy" decoding="async" onerror="this.parentElement.innerHTML='<div class=\'pp-placeholder\'><span>🌟</span><p>Сообщество</p></div>';">
+                </div>
+                <div class="partner-photo" data-psrc="img/13.jpg" data-pidx="2">
+                    <img src="img/13.jpg" alt="Мероприятия Super Jump" loading="lazy" decoding="async" onerror="this.parentElement.innerHTML='<div class=\'pp-placeholder\'><span>🎉</span><p>Мероприятия</p></div>';">
+                </div>
+                <div class="partner-photo" data-psrc="img/14.jpg" data-pidx="3">
+                    <img src="img/14.jpg" alt="Успехи партнёров" onerror="this.parentElement.innerHTML='<div class=\'pp-placeholder\'><span>🏆</span><p>Достижения</p></div>';">
+                </div>
+                <div class="partner-photo" data-psrc="img/15.jpg" data-pidx="4">
+                    <img src="img/15.jpg" alt="Рост в Super Jump" onerror="this.parentElement.innerHTML='<div class=\'pp-placeholder\'><span>🚀</span><p>Рост</p></div>';">
+                </div>
             </div>
-            <div class="partner-photo">
-                <img src="img/12.jpg" alt="Сообщество Super Jump"
-                     onerror="this.parentElement.innerHTML='<div class=\'pp-placeholder\'><span>🌟</span><p>Сообщество</p></div>';">
-            </div>
-            <div class="partner-photo">
-                <img src="img/13.jpg" alt="Мероприятия Super Jump"
-                     onerror="this.parentElement.innerHTML='<div class=\'pp-placeholder\'><span>🎉</span><p>Мероприятия</p></div>';">
-            </div>
-            <div class="partner-photo">
-                <img src="img/14.jpg" alt="Успехи партнёров"
-                     onerror="this.parentElement.innerHTML='<div class=\'pp-placeholder\'><span>🏆</span><p>Достижения</p></div>';">
-            </div>
-            <div class="partner-photo">
-                <img src="img/15.jpg" alt="Рост в Super Jump"
-                     onerror="this.parentElement.innerHTML='<div class=\'pp-placeholder\'><span>🚀</span><p>Рост</p></div>';">
-            </div>
+        </div>
+        <div class="partner-slider-controls">
+            <button class="partner-slider-btn" id="partnerPrev">&#8592;</button>
+            <div class="partner-slider-dots" id="partnerDots"></div>
+            <button class="partner-slider-btn" id="partnerNext">&#8594;</button>
         </div>
 
         <div class="partner-cta">
@@ -1037,6 +1166,18 @@
                     </div>
                 </div>
                 <div class="c-item">
+                    <div class="c-icon" style="background:rgba(38,165,228,0.12); border:1px solid rgba(38,165,228,0.25);">
+                        <svg viewBox="0 0 24 24" width="24" height="24" style="fill:#26A5E4;"><path d="M11.944 0A12 12 0 1 0 24 12.056A12.013 12.013 0 0 0 11.944 0Zm5.655 7.22c-.18 1.897-.962 6.502-1.36 8.627c-.168.9-.499 1.201-.82 1.23c-.696.064-1.225-.46-1.9-.902c-1.056-.693-1.653-1.124-2.678-1.8c-1.185-.78-.417-1.21.258-1.91c.177-.184 3.247-2.977 3.307-3.23c.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345c-.479.33-.913.49-1.302.48c-.428-.008-1.252-.241-1.865-.44c-.752-.244-1.349-.374-1.297-.789c.027-.216.325-.437.893-.663c3.498-1.524 5.83-2.529 6.998-3.014c3.332-1.386 4.025-1.627 4.476-1.635c.099-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472Z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Telegram</h4>
+                        <a href="https://t.me/RinaRaf" target="_blank" rel="noopener" class="tg-contact-link">
+                            <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 1 0 24 12.056A12.013 12.013 0 0 0 11.944 0Zm5.655 7.22c-.18 1.897-.962 6.502-1.36 8.627c-.168.9-.499 1.201-.82 1.23c-.696.064-1.225-.46-1.9-.902c-1.056-.693-1.653-1.124-2.678-1.8c-1.185-.78-.417-1.21.258-1.91c.177-.184 3.247-2.977 3.307-3.23c.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345c-.479.33-.913.49-1.302.48c-.428-.008-1.252-.241-1.865-.44c-.752-.244-1.349-.374-1.297-.789c.027-.216.325-.437.893-.663c3.498-1.524 5.83-2.529 6.998-3.014c3.332-1.386 4.025-1.627 4.476-1.635c.099-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472Z"/></svg>
+                            @RinaRaf
+                        </a>
+                    </div>
+                </div>
+                <div class="c-item">
                     <div class="c-icon">✉️</div>
                     <div>
                         <h4>Email</h4>
@@ -1051,6 +1192,9 @@
                     </div>
                 </div>
                 <div class="socials">
+                    <a href="https://t.me/RinaRaf" target="_blank" rel="noopener" class="soc soc-tg" title="Telegram @RinaRaf">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 1 0 24 12.056A12.013 12.013 0 0 0 11.944 0Zm5.655 7.22c-.18 1.897-.962 6.502-1.36 8.627c-.168.9-.499 1.201-.82 1.23c-.696.064-1.225-.46-1.9-.902c-1.056-.693-1.653-1.124-2.678-1.8c-1.185-.78-.417-1.21.258-1.91c.177-.184 3.247-2.977 3.307-3.23c.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345c-.479.33-.913.49-1.302.48c-.428-.008-1.252-.241-1.865-.44c-.752-.244-1.349-.374-1.297-.789c.027-.216.325-.437.893-.663c3.498-1.524 5.83-2.529 6.998-3.014c3.332-1.386 4.025-1.627 4.476-1.635c.099-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472Z"/></svg>
+                    </a>
                     <a href="https://vk.ru/rina_raf" target="_blank" rel="noopener" class="soc soc-vk" title="ВКонтакте">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4 8.893 4 8.455c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"/></svg>
                     </a>
@@ -1063,6 +1207,9 @@
                 </div>
             </div>
             <form class="cform" id="cform" novalidate>
+                <div class="contact-photo-wrap">
+                    <img src="img/2.jpg" alt="Рафикова Рина Римовна" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none';">
+                </div>
                 <h4>Записаться на занятие</h4>
                 <div class="frow">
                     <div class="fg">
@@ -1122,6 +1269,9 @@
             </div>
             <p class="foot-txt">Рафикова Рина Римовна — интеллект-тренер Super Jump<br>Амбассадор 6 ранга · Онлайн-тренировки по всему миру</p>
             <div class="foot-soc">
+                <a href="https://t.me/RinaRaf" target="_blank" rel="noopener" class="fs fs-tg" title="Telegram @RinaRaf">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 1 0 24 12.056A12.013 12.013 0 0 0 11.944 0Zm5.655 7.22c-.18 1.897-.962 6.502-1.36 8.627c-.168.9-.499 1.201-.82 1.23c-.696.064-1.225-.46-1.9-.902c-1.056-.693-1.653-1.124-2.678-1.8c-1.185-.78-.417-1.21.258-1.91c.177-.184 3.247-2.977 3.307-3.23c.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345c-.479.33-.913.49-1.302.48c-.428-.008-1.252-.241-1.865-.44c-.752-.244-1.349-.374-1.297-.789c.027-.216.325-.437.893-.663c3.498-1.524 5.83-2.529 6.998-3.014c3.332-1.386 4.025-1.627 4.476-1.635c.099-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472Z"/></svg>
+                </a>
                 <a href="https://vk.ru/rina_raf" target="_blank" rel="noopener" class="fs fs-vk" title="ВКонтакте">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4 8.893 4 8.455c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"/></svg>
                 </a>
@@ -1409,6 +1559,141 @@
             var dx = e.changedTouches[0].clientX - startX;
             if (Math.abs(dx) > 50) { dx < 0 ? goTo(current + 1) : goTo(current - 1); }
         }, {passive:true});
+    })();
+
+    // ======================
+    // PARTNER SLIDER + MODAL
+    // ======================
+    (function() {
+        var pTrack   = document.getElementById('partnerTrack');
+        var pPrev    = document.getElementById('partnerPrev');
+        var pNext    = document.getElementById('partnerNext');
+        var pDots    = document.getElementById('partnerDots');
+        if (!pTrack) return;
+
+        var pSlides  = Array.from(pTrack.querySelectorAll('.partner-photo'));
+        var pTotal   = pSlides.length;
+        var pCurrent = 0;
+
+        // Собираем sources
+        var pSrcs = pSlides.map(function(s) { return s.getAttribute('data-psrc') || ''; });
+
+        function getPVis() {
+            var w = window.innerWidth;
+            if (w <= 480) return 1;
+            if (w <= 768) return 2;
+            if (w <= 1024) return 3;
+            return 5;
+        }
+
+        function pBuildDots() {
+            pDots.innerHTML = '';
+            var vis = getPVis();
+            var pages = Math.ceil(pTotal / vis);
+            for (var i = 0; i < pages; i++) {
+                var d = document.createElement('div');
+                d.className = 'partner-slider-dot' + (i === pCurrent ? ' active' : '');
+                d.addEventListener('click', (function(ii){ return function(){ pGoTo(ii); }; })(i));
+                pDots.appendChild(d);
+            }
+        }
+
+        function pUpdateDots() {
+            var dots = pDots.querySelectorAll('.partner-slider-dot');
+            dots.forEach(function(d,i){ d.classList.toggle('active', i === pCurrent); });
+        }
+
+        function pGoTo(idx) {
+            var vis   = getPVis();
+            var pages = Math.ceil(pTotal / vis);
+            if (idx < 0)      idx = pages - 1;
+            if (idx >= pages) idx = 0;
+            pCurrent = idx;
+            var gap    = 14;
+            var slideW = pSlides[0] ? pSlides[0].offsetWidth + gap : 0;
+            var offset = pCurrent * vis * slideW;
+            var maxOff = (pTotal - vis) * slideW;
+            if (offset > maxOff) offset = maxOff;
+            pTrack.style.transform = 'translateX(-' + offset + 'px)';
+            pUpdateDots();
+            if (pPrev) pPrev.disabled = pCurrent === 0;
+            if (pNext) pNext.disabled = pCurrent >= Math.ceil(pTotal / getPVis()) - 1;
+        }
+
+        if (pPrev) pPrev.addEventListener('click', function(){ pGoTo(pCurrent - 1); });
+        if (pNext) pNext.addEventListener('click', function(){ pGoTo(pCurrent + 1); });
+
+        pBuildDots();
+        pGoTo(0);
+
+        window.addEventListener('resize', function(){
+            var vis   = getPVis();
+            var pages = Math.ceil(pTotal / vis);
+            if (pCurrent >= pages) pCurrent = pages - 1;
+            pBuildDots();
+            pGoTo(pCurrent);
+        });
+
+        // Touch swipe на партнёрском слайдере
+        var pStartX = 0;
+        pTrack.addEventListener('touchstart', function(e){ pStartX = e.touches[0].clientX; }, {passive:true});
+        pTrack.addEventListener('touchend', function(e){
+            var dx = e.changedTouches[0].clientX - pStartX;
+            if (Math.abs(dx) > 50) { dx < 0 ? pGoTo(pCurrent+1) : pGoTo(pCurrent-1); }
+        }, {passive:true});
+
+        // ---- PARTNER MODAL ----
+        var pModal   = document.getElementById('partnerModal');
+        var pMImg    = document.getElementById('partnerModalImg');
+        var pMClose  = document.getElementById('partnerModalClose');
+        var pMPrev   = document.getElementById('partnerNavPrev');
+        var pMNext   = document.getElementById('partnerNavNext');
+        var pMCount  = document.getElementById('partnerModalCounter');
+        var pMCurr   = 0;
+
+        function openPartner(idx) {
+            pMCurr = idx;
+            pMImg.style.opacity = '0';
+            pMImg.src = pSrcs[pMCurr];
+            pMImg.onload  = function(){ pMImg.style.opacity='1'; };
+            pMImg.onerror = function(){ pMImg.style.opacity='1'; };
+            pMCount.textContent = (pMCurr+1) + ' / ' + pTotal;
+            pModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closePartner() {
+            pModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function prevPartner() { pMCurr = (pMCurr - 1 + pTotal) % pTotal; openPartner(pMCurr); }
+        function nextPartner() { pMCurr = (pMCurr + 1) % pTotal; openPartner(pMCurr); }
+
+        if (pMClose) pMClose.addEventListener('click', closePartner);
+        if (pMPrev)  pMPrev.addEventListener('click', prevPartner);
+        if (pMNext)  pMNext.addEventListener('click', nextPartner);
+        if (pModal)  pModal.addEventListener('click', function(e){ if(e.target===pModal) closePartner(); });
+
+        document.addEventListener('keydown', function(e){
+            if (!pModal || !pModal.classList.contains('active')) return;
+            if (e.key==='Escape')     closePartner();
+            if (e.key==='ArrowLeft')  prevPartner();
+            if (e.key==='ArrowRight') nextPartner();
+        });
+
+        // Touch swipe в модалке партнёров
+        var pmTouchX = 0;
+        if (pModal) {
+            pModal.addEventListener('touchstart', function(e){ pmTouchX=e.touches[0].clientX; }, {passive:true});
+            pModal.addEventListener('touchend', function(e){
+                var dx = e.changedTouches[0].clientX - pmTouchX;
+                if (Math.abs(dx)>40){ dx<0 ? nextPartner() : prevPartner(); }
+            }, {passive:true});
+        }
+
+        // Клик по каждому слайду
+        pSlides.forEach(function(slide, idx){
+            slide.addEventListener('click', function(){ openPartner(idx); });
+        });
     })();
 
     // ======================
