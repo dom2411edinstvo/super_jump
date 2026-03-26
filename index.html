@@ -725,10 +725,47 @@
     .toast.show { transform: translateX(-50%) translateY(0); opacity:1; }
 
     /* =====================================================
-       МОБИЛЬНЫЙ ГЕРОЙ — как на референсном сайте:
-       левая колонка — текст+кнопки, правая — фото с бейджами
-       Бейджи прикреплены к фото снизу по бокам
+       МОБИЛЬНЫЙ ГЕРОЙ — отдельная структура
     ===================================================== */
+
+    /* По умолчанию мобильный layout скрыт */
+    .hero-mobile-layout { display: none; }
+    /* Десктопный grid показан */
+    .hero-grid-desktop { display: grid; }
+
+    /* Мобильный фото-враппер */
+    .hm-photo-wrap {
+        position: relative;
+        display: inline-block;
+    }
+    .hm-photo {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 16px !important;
+    }
+
+    /* Мобильные мини-бейджи на фото */
+    .hm-badge {
+        position: absolute;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        border-radius: 10px;
+        padding: 5px 9px;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        box-shadow: 0 4px 12px rgba(255,107,53,0.45);
+        white-space: nowrap;
+        z-index: 2;
+    }
+    .hm-b-lbl {
+        font-size: 7px; color: rgba(0,0,0,0.55); font-weight: 600;
+        letter-spacing: 0.4px; text-transform: uppercase; line-height: 1;
+    }
+    .hm-b-val {
+        font-size: 9px; font-weight: 700; color: #000; line-height: 1.2;
+    }
+    .hm-badge-top { top: 8px; right: -8px; }
+    .hm-badge-bot { bottom: 18px; left: -8px; }
 
     /* RESPONSIVE */
     @media (max-width: 1024px) {
@@ -751,56 +788,94 @@
         .mbtn { display: flex; }
         section { padding: 40px 0; }
 
-        /* HERO мобильный — 2 колонки: текст слева, фото справа */
+        /* HERO: скрываем десктоп, показываем мобильный layout */
+        .hero-grid-desktop { display: none !important; }
+        .hero-mobile-layout { display: block; }
         .hero {
-            padding-top: 64px;
-            padding-bottom: 12px;
+            padding-top: 62px;
+            padding-bottom: 16px;
             min-height: 100svh;
-            align-items: center;
-        }
-        .hero-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            align-items: center;
+            align-items: flex-start;
         }
 
-        /* Текстовая колонка */
-        .hero-badge { font-size: 9px; padding: 5px 10px; margin-bottom: 6px; letter-spacing: 1px; }
-        .hero h1 { font-size: clamp(14px, 3.8vw, 20px); margin-bottom: 6px; line-height: 1.2; }
-        .hero-desc { font-size: 10.5px; margin-bottom: 8px; line-height: 1.5; max-width: 100%; }
-        .hero-format { grid-template-columns: repeat(2, 1fr); gap: 5px; margin-bottom: 8px; }
-        .hf-item { padding: 7px 5px; font-size: 10px; gap: 4px; border-radius: 10px; }
-        .hf-icon { font-size: 17px; }
-        .hero-btns { gap: 6px; flex-direction: column; margin-top: 8px; }
-        .hero-btns .btn { padding: 9px 14px; font-size: 10px; justify-content: center; }
+        /* Строка бейджа сверху */
+        .hm-top { margin-bottom: 8px; }
+        .hm-top .hero-badge { font-size: 8px; padding: 4px 10px; letter-spacing: 1px; display: inline-flex; }
 
-        /* Фото колонка — фото + бейджи снизу по углам */
-        .hero-img-wrap {
-            position: relative;
+        /* Строка: заголовок + фото */
+        .hm-row1 {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .hm-title-col { display: flex; flex-direction: column; justify-content: flex-start; }
+        .hm-h1 {
+            font-size: clamp(15px, 4vw, 22px);
+            font-weight: 900;
+            line-height: 1.2;
+            margin: 0;
+        }
+        .hm-h1 span {
+            display: block;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        /* Фото-враппер — справа, занимает фиксированную ширину */
+        .hm-photo-col { flex-shrink: 0; }
+        .hm-photo-wrap {
+            width: 110px;
+            height: 148px;
+        }
+        .hm-photo {
+            width: 110px !important;
+            height: 148px !important;
+            border-radius: 14px !important;
+            border: 2px solid rgba(255,107,53,0.4) !important;
+            box-shadow: 0 8px 24px rgba(255,107,53,0.2) !important;
+        }
+
+        /* Параграф */
+        .hm-desc {
+            font-size: 11px;
+            color: var(--text-light);
+            line-height: 1.55;
+            margin-bottom: 8px;
+        }
+
+        /* Фигуры — 4 колонки, 2 строки */
+        .hm-format {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+        .hm-format .hf-item {
+            padding: 6px 4px;
+            font-size: 9px;
+            gap: 3px;
+            border-radius: 9px;
+        }
+        .hm-format .hf-icon { font-size: 15px; }
+
+        /* Кнопки — в 1 строку */
+        .hm-btns {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            gap: 8px;
+            flex-wrap: nowrap;
+        }
+        .hm-btn {
+            flex: 1;
             justify-content: center;
+            padding: 9px 10px !important;
+            font-size: 10px !important;
+            letter-spacing: 0.3px !important;
+            white-space: nowrap;
         }
 
-        /* Фото немного больше на мобиле */
-        .hero-photo {
-            width: 100%;
-            max-width: 200px;
-            height: 260px;
-            border-radius: 18px;
-            margin-bottom: 0;
-        }
-
-        /* Десктопные плавающие бейджи — скрываем position:absolute версии */
-        .ambassador-badge,
-        .float-card {
-            display: none !important;
-        }
-
-        /* Скрываем старые inline badges */
-        .hero-inline-badges { display: none !important; }
-
+        /* Остальные секции */
         .about-stats { grid-template-columns: 1fr 1fr; }
         .frow { grid-template-columns: 1fr; }
         .cform { padding: 22px; }
@@ -823,23 +898,25 @@
     }
 
     @media (max-width: 480px) {
-        .hero-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-        .hero-photo { max-width: 155px; height: 200px; }
-        .hero h1 { font-size: clamp(13px, 3.5vw, 17px); }
-        .hero-format { grid-template-columns: repeat(2, 1fr); gap: 4px; }
-        .hf-item { padding: 6px 4px; font-size: 9px; gap: 3px; }
-        .hf-icon { font-size: 15px; }
-        .hero-btns .btn { font-size: 9px; padding: 7px 10px; }
+        .hm-photo-wrap { width: 95px; height: 128px; }
+        .hm-photo { width: 95px !important; height: 128px !important; }
+        .hm-h1 { font-size: clamp(13px, 3.8vw, 18px); }
+        .hm-format { grid-template-columns: repeat(4, 1fr); gap: 4px; }
+        .hm-format .hf-item { font-size: 8px; padding: 5px 3px; }
+        .hm-format .hf-icon { font-size: 13px; }
+        .hm-btn { font-size: 9px !important; padding: 8px 8px !important; }
         .cert-slide { flex: 0 0 calc(50% - 10px); }
         .partner-photo { flex: 0 0 calc(50% - 7px); }
     }
 
     @media (max-width: 360px) {
-        .hero-grid { grid-template-columns: 1fr; }
-        .hero-img-wrap { order: -1; }
-        .hero-photo { max-width: 180px; height: 230px; margin: 0 auto; }
-        .hero-mobile-badges { margin-top: 6px; }
-        .hero-btns { flex-direction: row; flex-wrap: wrap; }
+        .hm-photo-wrap { width: 85px; height: 114px; }
+        .hm-photo { width: 85px !important; height: 114px !important; }
+        .hm-format { grid-template-columns: repeat(4, 1fr); gap: 3px; }
+        .hm-format .hf-item { font-size: 7.5px; padding: 4px 2px; gap: 2px; }
+        .hm-format .hf-icon { font-size: 12px; }
+        .hm-btns { gap: 6px; }
+        .hm-btn { font-size: 8.5px !important; padding: 7px 6px !important; }
     }
 </style>
 </head>
@@ -920,14 +997,15 @@
     <a href="#about">ТРЕНЕР</a>
     <a href="#partner">ПАРТНЁРСТВО</a>
     <a href="#contact">ЗАПИСАТЬСЯ</a>
-    <a href="https://t.me/RinaRaf" target="_blank" rel="noopener" style="color:var(--tg-color);">✈️ TELEGRAM</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
     <div class="hero-bg"></div>
     <div class="con">
-        <div class="hero-grid">
+
+        <!-- ДЕСКТОП / ПЛАНШЕТ: стандартная 2-колонночная сетка -->
+        <div class="hero-grid hero-grid-desktop">
             <!-- Левая колонка — текст -->
             <div>
                 <div class="hero-badge">ОНЛАЙН-ТРЕНИРОВКИ ПО ВСЕМУ МИРУ</div>
@@ -956,26 +1034,73 @@
                     <img src="img/1.jpg" alt="Рафикова Рина Римовна — интеллект-тренер Super Jump"
                          onerror="this.style.display='none'; this.parentElement.innerHTML='👩';">
                 </div>
-
-                <!-- Десктопные плавающие бейджи (position:absolute) -->
-                <!-- Амбассадор — вверху СПРАВА, без иконки -->
+                <!-- Амбассадор — вверху СПРАВА -->
                 <div class="hero-float-badge ambassador-badge">
                     <div class="fb-text">
                         <span class="fb-lbl">Статус</span>
                         <span class="fb-val">Амбассадор 6 ранга</span>
                     </div>
                 </div>
-                <!-- Онлайн — внизу СЛЕВА, заходит в фото, без иконки -->
+                <!-- Онлайн — внизу СЛЕВА -->
                 <div class="hero-float-badge float-card">
                     <div class="fb-text">
                         <span class="fb-lbl">Формат</span>
                         <span class="fb-val">Онлайн</span>
                     </div>
                 </div>
-
-
             </div>
         </div>
+
+        <!-- МОБИЛЬНЫЙ ГЕРОЙ: своя структура -->
+        <div class="hero-mobile-layout">
+            <!-- Строка 1: бейдж + значок -->
+            <div class="hm-top">
+                <div class="hero-badge">ОНЛАЙН-ТРЕНИРОВКИ ПО ВСЕМУ МИРУ</div>
+            </div>
+            <!-- Строка 2: заголовок слева, фото справа -->
+            <div class="hm-row1">
+                <div class="hm-title-col">
+                    <h1 class="hm-h1">Раскрой потенциал своего разума с <span>Super Jump</span></h1>
+                </div>
+                <div class="hm-photo-col">
+                    <div class="hm-photo-wrap">
+                        <div class="hero-photo hm-photo">
+                            <img src="img/1.jpg" alt="Рафикова Рина Римовна"
+                                 onerror="this.style.display='none'; this.parentElement.innerHTML='👩';">
+                        </div>
+                        <!-- мобильные мини-бейджи по углам фото -->
+                        <div class="hm-badge hm-badge-top">
+                            <span class="hm-b-lbl">Статус</span>
+                            <span class="hm-b-val">Амбассадор 6 ранга</span>
+                        </div>
+                        <div class="hm-badge hm-badge-bot">
+                            <span class="hm-b-lbl">Формат</span>
+                            <span class="hm-b-val">Онлайн</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Строка 3: параграф -->
+            <p class="hm-desc">
+                Комплекс интеллектуальных упражнений — решаем психологические проблемы, улучшаем здоровье, создаём состояние счастья в моменте, достигаем жизненные цели.
+            </p>
+            <!-- Строка 4: фигуры 2 строки по 4 -->
+            <div class="hm-format">
+                <div class="hf-item"><span class="hf-icon">💻</span><span>Онлайн</span></div>
+                <div class="hf-item"><span class="hf-icon">🎯</span><span>Работа с первопричиной</span></div>
+                <div class="hf-item"><span class="hf-icon">🤲</span><span>Личное сопровождение</span></div>
+                <div class="hf-item"><span class="hf-icon">🧠</span><span>Повышение интеллекта</span></div>
+                <div class="hf-item"><span class="hf-icon">👥</span><span>Развитие в сильном сообществе</span></div>
+                <div class="hf-item"><span class="hf-icon">🌍</span><span>Из любой точки мира</span></div>
+                <div class="hf-item"><span class="hf-icon">🗣️</span><span>Ценит живое общение</span></div>
+            </div>
+            <!-- Строка 5: кнопки в 1 строку -->
+            <div class="hm-btns">
+                <a href="#contact" class="btn btn-primary hm-btn">ЗАПИСАТЬСЯ</a>
+                <a href="#what" class="btn btn-secondary hm-btn">УЗНАТЬ БОЛЬШЕ</a>
+            </div>
+        </div>
+
     </div>
 </section>
 
