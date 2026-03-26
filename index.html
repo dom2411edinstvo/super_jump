@@ -768,24 +768,23 @@
             align-items: stretch;
         }
 
-        /* Мобильный layout: flex-column, растянут на весь экран */
+        /* Мобильный layout: flex-column, равномерное распределение по экрану */
         .hero-mobile-layout {
             position: relative;
             z-index: 1;
             width: 100%;
             height: 100%;
-            padding: 8px 14px 10px;
+            padding: 8px 14px 14px;
             padding-top: calc(env(safe-area-inset-top) + 60px);
             display: flex;
             flex-direction: column;
             gap: 0;
-            justify-content: flex-start;
+            justify-content: space-between;
         }
 
         /* ---- БЛОК 1: бейдж ---- */
         .hm-top {
             flex-shrink: 0;
-            margin-bottom: 5px;
         }
         .hm-top .hero-badge {
             font-size: 9px;
@@ -801,7 +800,6 @@
             gap: 10px;
             align-items: flex-start;
             flex-shrink: 0;
-            margin-bottom: 0;
         }
 
         /* Текстовая колонка — заголовок + параграф как единый блок */
@@ -814,7 +812,7 @@
             padding-top: 4px;
         }
 
-        /* Заголовок — чуть ниже от бейджа */
+        /* Заголовок */
         .hm-h1 {
             font-size: clamp(19px, 5.8vw, 30px);
             font-weight: 900;
@@ -830,7 +828,7 @@
             background-clip: text;
         }
 
-        /* Параграф — прямо под заголовком, единый блок с ним */
+        /* Параграф — прямо под заголовком */
         .hm-desc {
             flex-shrink: 0;
             font-size: clamp(11px, 3.1vw, 13px);
@@ -844,13 +842,13 @@
             flex-shrink: 0;
         }
 
-        /* Враппер фото — выше по высоте */
+        /* Враппер фото — чуть выше */
         .hm-photo-wrap {
             position: relative;
             width: 43vw;
             max-width: 185px;
-            height: calc(43vw * 1.52);
-            max-height: calc(185px * 1.52);
+            height: calc(43vw * 1.62);
+            max-height: calc(185px * 1.62);
         }
 
         /* Само фото */
@@ -895,39 +893,36 @@
         .hm-badge-top { top: 10px; right: -10px; }
         .hm-badge-bot { bottom: 14px; left: -10px; }
 
-        /* ---- БЛОК 4: фигуры — под оффером, увеличены ---- */
+        /* ---- БЛОК 3: фигуры — крупнее ---- */
         .hm-format {
             flex-shrink: 0;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 6px;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            gap: 7px;
         }
         .hm-format .hf-item {
-            padding: 9px 4px 8px;
+            padding: 11px 4px 10px;
             font-size: clamp(9.5px, 2.6vw, 12px);
-            gap: 5px;
-            border-radius: 12px;
+            gap: 6px;
+            border-radius: 13px;
             background: rgba(255,107,53,0.09);
             border: 1px solid rgba(255,107,53,0.25);
         }
         .hm-format .hf-icon {
-            font-size: clamp(18px, 5vw, 24px);
+            font-size: clamp(20px, 5.5vw, 26px);
         }
 
-        /* ---- БЛОК 5: кнопки — крупнее ---- */
+        /* ---- БЛОК 4: кнопки — крупнее ---- */
         .hm-btns {
             flex-shrink: 0;
             display: flex;
-            gap: 9px;
-            margin-bottom: 2px;
+            gap: 10px;
         }
         .hm-btn {
             flex: 1;
             justify-content: center;
-            padding: 14px 10px !important;
-            font-size: clamp(11px, 3vw, 14px) !important;
+            padding: 16px 10px !important;
+            font-size: clamp(12px, 3.2vw, 15px) !important;
             letter-spacing: 0.3px !important;
             white-space: nowrap;
             border-radius: 50px;
@@ -960,15 +955,15 @@
         .hm-photo-wrap {
             width: 42vw;
             max-width: 170px;
-            height: calc(42vw * 1.52);
-            max-height: calc(170px * 1.52);
+            height: calc(42vw * 1.62);
+            max-height: calc(170px * 1.62);
         }
         .hm-h1 { font-size: clamp(17px, 5.2vw, 24px); }
         .hm-desc { font-size: clamp(10.5px, 2.9vw, 12px); }
-        .hm-format { gap: 5px; margin-top: 9px; margin-bottom: 9px; }
-        .hm-format .hf-item { font-size: clamp(9px, 2.4vw, 11px); padding: 8px 3px 7px; gap: 4px; }
-        .hm-format .hf-icon { font-size: clamp(17px, 4.7vw, 22px); }
-        .hm-btn { font-size: clamp(10px, 2.8vw, 13px) !important; padding: 13px 8px !important; }
+        .hm-format { gap: 6px; }
+        .hm-format .hf-item { font-size: clamp(9px, 2.4vw, 11px); padding: 10px 3px 9px; gap: 5px; }
+        .hm-format .hf-icon { font-size: clamp(18px, 5vw, 23px); }
+        .hm-btn { font-size: clamp(11px, 3vw, 14px) !important; padding: 15px 8px !important; }
         .cert-slide { flex: 0 0 calc(50% - 10px); }
         .partner-photo { flex: 0 0 calc(50% - 7px); }
     }
@@ -976,22 +971,22 @@
     /* ---- Очень маленькие ≤360px ---- */
     @media (max-width: 360px) {
         .hero-mobile-layout {
-            padding: 6px 12px 8px;
+            padding: 6px 12px 12px;
             padding-top: calc(env(safe-area-inset-top) + 58px);
         }
         .hm-photo-wrap {
             width: 40vw;
             max-width: 148px;
-            height: calc(40vw * 1.52);
-            max-height: calc(148px * 1.52);
+            height: calc(40vw * 1.62);
+            max-height: calc(148px * 1.62);
         }
         .hm-h1 { font-size: clamp(15px, 4.8vw, 20px); margin-bottom: 5px; }
         .hm-desc { font-size: clamp(10px, 2.7vw, 11.5px); }
-        .hm-format { gap: 4px; margin-top: 8px; margin-bottom: 8px; }
-        .hm-format .hf-item { font-size: clamp(8.5px, 2.3vw, 10px); padding: 7px 2px 6px; gap: 3px; }
-        .hm-format .hf-icon { font-size: clamp(15px, 4.3vw, 20px); }
-        .hm-btns { gap: 7px; }
-        .hm-btn { font-size: clamp(9.5px, 2.6vw, 12px) !important; padding: 12px 6px !important; }
+        .hm-format { gap: 5px; }
+        .hm-format .hf-item { font-size: clamp(8.5px, 2.3vw, 10px); padding: 9px 2px 8px; gap: 4px; }
+        .hm-format .hf-icon { font-size: clamp(16px, 4.5vw, 21px); }
+        .hm-btns { gap: 8px; }
+        .hm-btn { font-size: clamp(10px, 2.8vw, 13px) !important; padding: 14px 6px !important; }
     }
 </style>
 </head>
